@@ -1,12 +1,12 @@
 <template>
     <header class="fixed-topx">
         <nav class="navbar navbar-expand-lg navbar-dark align-items-center">
-            <a
+            <nuxt-link
+                to="/"
                 class="navbar-brand text-uppercase fw-500"
-                href="#"
-                title="Project Name"
-                >DesignHouse</a
             >
+                Question and Answer
+            </nuxt-link>
             <button
                 class="navbar-toggler mr-auto"
                 type="button"
@@ -24,9 +24,7 @@
                         <a class="nav-link" href="#" title="Shots">Designs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" title="Designers"
-                            > Designers </a
-                        >
+                        <a class="nav-link" href="#" title="Designers"> Designers </a>
                     </li>
                 </ul>
                 <div class="header-search">
@@ -45,9 +43,7 @@
                         </div>
                     </form>
                 </div>
-                <div
-                    class="upload-shot white-path font-14 fw-500 text-uppercase mr-auto"
-                >
+                <div class="upload-shot white-path font-14 fw-500 text-uppercase mr-auto">
                     <a href="#" class="primary-bg-color text-white">
                         <i class="fas fa-cloud-upload-alt"></i> Upload
                     </a>
@@ -55,12 +51,12 @@
             </div>
 
             <!-- Before Login -->
-            <ul class="before-login font-14 fw-300 text-uppercase d-none">
+            <ul class="before-login font-14 fw-300 text-uppercase">
                 <li>
-                    <a href="#">Sign up</a>
+                    <nuxt-link to="/register">Sign Up</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">Sign in</a>
+                    <nuxt-link to="/login">Login</nuxt-link>
                 </li>
             </ul>
             <!-- End Before Login -->
@@ -83,12 +79,8 @@
                             src="~assets/images/profile.png"
                         />
                         <div class="usr-info">
-                            <span class="user-name font-14 fw-500"
-                                >John Doe</span
-                            >
-                            <span class="user-deg font-10 fw-300"
-                                >Sr. UI Designer</span
-                            >
+                            <span class="user-name font-14 fw-500">John Doe</span>
+                            <span class="user-deg font-10 fw-300">Sr. UI Designer</span>
                             <span class="down-chevron">
                                 <i class="fa fa-angle-down"></i>
                             </span>
@@ -99,9 +91,7 @@
                         aria-labelledby="userDropdown"
                     >
                         <div class="dropdown-title-group font-12 fw-500">
-                            <span class="dropdown-title text-uppercase"
-                                >Your Account</span
-                            >
+                            <span class="dropdown-title text-uppercase">Your Account</span>
                         </div>
                         <a
                             class="dropdown-item mt-28"
