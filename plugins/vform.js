@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Form, HasError, AlertError, AlertSuccess } from 'vform';
-Vue.component(Error.name, HasError);
+Vue.component(HasError.name, HasError);
 Vue.component(AlertSuccess.name, AlertSuccess);
 Vue.component(AlertError.name, AlertError);
 
