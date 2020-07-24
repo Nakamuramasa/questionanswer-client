@@ -55,9 +55,9 @@ export default {
   */
   modules: [
     'bootstrap-vue/nuxt',
+    '@nuxtjs/auth',
     '@nuxtjs/axios',
-    '@nuxtjs/dotenv',
-    '@nuxtjs/auth'
+    '@nuxtjs/dotenv'
   ],
 
   auth: {
