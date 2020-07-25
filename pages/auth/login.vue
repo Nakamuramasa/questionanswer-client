@@ -10,42 +10,29 @@
                     <nuxt-link to="/verification/resend">Resend verification email</nuxt-link>
                 </alert-error>
                 <div class="form-group">
-                    <input
-                        type="text"
-                        name="email"
+                    <base-input
+                        :form="form"
+                        field="email"
                         v-model="form.email"
-                        class="form-control form-control-lg font-14 fw-300"
-                        :class="{ 'is-invalid' :form.errors.has('email') }"
                         placeholder="Email"
-                    />
-                    <has-error :form="form" field="email"></has-error>
+                    ></base-input>
                 </div>
                 <div class="form-group">
-                    <input
-                        type="password"
-                        name="password"
+                    <base-input
+                        :form="form"
+                        field="password"
+                        inputType="password"
                         v-model="form.password"
-                        class="form-control form-control-lg font-14 fw-300"
-                        :class="{ 'is-invalid' :form.errors.has('password') }"
                         placeholder="Password"
-                    />
-                    <has-error :form="form" field="password"></has-error>
+                    ></base-input>
                 </div>
                 <div class="mt-4 mb-4 clearfix">
                     <nuxt-link to="/password/email" class="forgot-pass color-blue font-14 fw-400"> Forgot password? </nuxt-link>
                 </div>
                 <div class="text-right">
-                    <base-button></base-button>
-                    <!-- <button
-                        type="submit"
-                        :disabled="form.busy"
-                        class="btn btn-primary primary-bg-color font-16 fw-500 text-uppercase"
-                    >
-                        <span v-if="form.busy">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
+                    <base-button :loading="form.busy">
                         Login
-                    </button> -->
+                    </base-button>
                 </div>
                 <p class="font-14 fw-400 text-center mt-4">
                     Don't have an account yet?
