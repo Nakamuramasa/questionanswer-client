@@ -3,7 +3,7 @@
         <section class="hero text-center bg-secondary mb-4 text-white">
             <div class="container">
                 <h1 class="font-28 fw-600 text-uppercase">
-                    Ask Question
+                    Update Question
                 </h1>
             </div>
         </section>
@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form class="auth-form" @submit.prevent="submit">
                         <alert-success :form="form">
-                            Question succesfully submited
+                            Question succesfully updated
                         </alert-success>
                         <div class="form-group">
                             <base-input
@@ -22,6 +22,14 @@
                                 v-model="form.title"
                                 placeholder="Enter a title"
                             ></base-input>
+                        </div>
+                        <div class="form-group">
+                            <client-only>
+                                <input-tag
+                                    v-model="form.tags"
+                                    placeholder="Tags separated by commas"
+                                ></input-tag>
+                            </client-only>
                         </div>
                         <div class="form-group">
                             <base-textarea
@@ -79,6 +87,16 @@ export default {
             this.form.tags = this.question.tag_list.tags || [];
         }
     },
-    methods: {}
+    methods: {
+        submit(){
+            this.form.put(`/questions/${this.$route.params.id}`)
+            .then(res =>  {
+                setTimeout(() => {
+                    this.$router.push({ name: 'index' })
+                }, 1000);
+            })
+            .catch(err => console.log(err.response))
+        }
+    }
 };
 </script>
