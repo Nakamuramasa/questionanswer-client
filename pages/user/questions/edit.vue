@@ -24,16 +24,16 @@
                             ></base-input>
                         </div>
                         <div class="form-group">
-                            <base-input
+                            <base-textarea
                                 :form="form"
                                 field="body"
                                 v-model="form.body"
-                                placeholder="Enter a body"
-                            ></base-input>
+                                placeholder="Enter a question"
+                            ></base-textarea>
                         </div>
                         <div class="text-right">
                             <base-button :loading="form.busy">
-                                Update Design
+                                Update Question
                             </base-button>
                         </div>
                     </form>

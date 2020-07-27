@@ -24,16 +24,24 @@
                             ></base-input>
                         </div>
                         <div class="form-group">
-                            <base-input
+                            <client-only>
+                                <input-tag
+                                    v-model="form.tags"
+                                    placeholder="Tags separated by commas"
+                                ></input-tag>
+                            </client-only>
+                        </div>
+                        <div class="form-group">
+                            <base-textarea
                                 :form="form"
                                 field="body"
                                 v-model="form.body"
-                                placeholder="Enter a body"
-                            ></base-input>
+                                placeholder="Enter a question"
+                            ></base-textarea>
                         </div>
                         <div class="text-right">
                             <base-button :loading="form.busy">
-                                Update Design
+                                Ask Question
                             </base-button>
                         </div>
                     </form>

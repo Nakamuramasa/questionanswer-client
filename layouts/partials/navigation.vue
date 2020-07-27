@@ -44,9 +44,9 @@
                     </form>
                 </div>
                 <div class="upload-shot white-path font-14 fw-500 text-uppercase mr-auto">
-                    <a href="/questions" class="primary-bg-color text-white">
+                    <nuxt-link to="/questions" class="primary-bg-color text-white">
                         ASK QUESTION
-                    </a>
+                    </nuxt-link>
                 </div>
             </div>
 

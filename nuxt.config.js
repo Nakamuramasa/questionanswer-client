@@ -42,6 +42,7 @@ export default {
   */
   plugins: [
     '~plugins/vform',
+    { src: '~plugins/vue-input-tag.js', mode: 'client' },
     '~components/_global'
   ],
   /*
