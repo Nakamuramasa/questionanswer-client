@@ -19,30 +19,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav font-14 fw-300">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#" title="Shots">Designs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" title="Designers"> Designers </a>
-                    </li>
-                </ul>
-                <div class="header-search">
-                    <form action="" method="">
-                        <div class="form-group">
-                            <input
-                                type="text"
-                                autocomplete="OFF"
-                                name="search"
-                                class="form-control text-white font-14 fw-300"
-                                placeholder="Search and hit enter..."
-                            />
-                            <div class="search-icon text-white">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div class="upload-shot white-path font-14 fw-500 text-uppercase mr-auto">
                     <nuxt-link to="/questions" class="primary-bg-color text-white">
                         ASK QUESTION

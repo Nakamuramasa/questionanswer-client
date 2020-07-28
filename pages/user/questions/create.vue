@@ -70,7 +70,7 @@ export default {
             .then(res => {
                 setTimeout(() => {
                     this.$router.push({ name: 'index' })
-                }, 1000);
+                }, 2000);
             })
             .catch(err => console.log(err.response))
         }
