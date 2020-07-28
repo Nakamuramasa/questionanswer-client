@@ -41,6 +41,7 @@
                             ></base-textarea>
                         </div>
                         <div class="text-right">
+                            <nuxt-link :to="{name: 'user.dashboard'}">Cancel</nuxt-link>
                             <base-button :loading="form.busy">
                                 Update Question
                             </base-button>
@@ -93,7 +94,7 @@ export default {
             this.form.put(`/questions/${this.$route.params.id}`)
             .then(res =>  {
                 setTimeout(() => {
-                    this.$router.push({ name: 'index' })
+                    this.$router.push({ name: 'user.dashboard' })
                 }, 2000);
             })
             .catch(err => console.log(err.response))

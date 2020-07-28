@@ -72,14 +72,10 @@
                             <div class="dropdown-title-group font-12 fw-500">
                                 <span class="dropdown-title text-uppercase">Your Account</span>
                             </div>
-                            <a
-                                class="dropdown-item mt-28"
-                                href="#"
-                                title="Profile"
-                            >
-                                <i class="fa fa-user"></i>
-                                Profile
-                            </a>
+                            <nuxt-link to="/user/dashboard" class="dropdown-item mt-28" title="Profile">
+                                <i class="fa fa-question"></i>
+                                My Question
+                            </nuxt-link>
                             <nuxt-link to="/password/setting" class="dropdown-item" title="Setting">
                                 <i class="fa fa-cogs"></i>
                                 Password Setting
