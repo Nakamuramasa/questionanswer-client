@@ -104,10 +104,10 @@
                                 <i class="fa fa-user"></i>
                                 Profile
                             </a>
-                            <a class="dropdown-item" href="#" title="Setting">
+                            <nuxt-link to="/password/setting" class="dropdown-item" title="Setting">
                                 <i class="fa fa-cogs"></i>
-                                Setting
-                            </a>
+                                Password Setting
+                            </nuxt-link>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" @click.prevent="logout">
                                 <i class="fa fa-lock"></i>
