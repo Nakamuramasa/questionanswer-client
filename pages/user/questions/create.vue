@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form class="auth-form" @submit.prevent="submit">
                         <alert-success :form="form">
-                            Question succesfully submited
+                            Question succesfully created
                         </alert-success>
                         <div class="form-group">
                             <base-input
@@ -28,6 +28,7 @@
                                 <input-tag
                                     v-model="form.tags"
                                     placeholder="Tags separated by commas"
+                                    add-tag-on-keys=188
                                 ></input-tag>
                             </client-only>
                         </div>

@@ -28,6 +28,7 @@
                                 <input-tag
                                     v-model="form.tags"
                                     placeholder="Tags separated by commas"
+                                    add-tag-on-keys=188
                                 ></input-tag>
                             </client-only>
                         </div>
@@ -65,7 +66,7 @@ export default {
     },
     async asyncData({ $axios, params, error, redirect }){
         try{
-            const question = await $axios.$get(`/questions/${params.id}`);
+            const question = await $axios.$get(`/questions/${params.id}/byUser`);
             return { question: question.data };
         }catch(err){
             if(err.response.status === 404){
