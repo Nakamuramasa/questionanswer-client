@@ -15,7 +15,8 @@ const routes = [
     { path: '/password/setting', name: 'password.setting', component: page('user/settings/password-setting.vue') },
     { path: '/user/dashboard', name: 'user.dashboard', component: page('user/settings/dashboard.vue') },
     { path: '/questions', name: 'questions.create', component: page('user/questions/create.vue') },
-    { path: '/questions/:id/edit', name: 'questions.edit', component: page('user/questions/edit.vue') }
+    { path: '/questions/:id/edit', name: 'questions.edit', component: page('user/questions/edit.vue') },
+    { path: '/question/:slug', name: 'questions.show', component: page('user/questions/show.vue') }
 ];
 
 export function createRouter(){
