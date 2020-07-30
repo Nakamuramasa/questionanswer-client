@@ -1,146 +1,124 @@
 <template>
     <section class="post-details mt-4 pb-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="row">
-                    <!-- LEFT -->
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                {{ question.title }}
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">{{ question.body }}</p>
-                            </div>
+            <div class="row">
+                <!-- LEFT -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ question.title }}
                         </div>
-                        <!-- Design Comments -->
-                        <div class="design-comments mt-3">
-                            <h1 class="font-16 fw-300 mb-4">
-                                <strong class="fw-500">
-                                    {{ replies.length }} replies
-                                </strong>
-                            </h1>
-                            <ul class="comment-list">
-                                <li class="clearfix"  v-for="reply in replies" :key="reply.id">
-                                    <div class="comment-thumb float-left">
-                                        <a href="#">
-                                            <img :src="reply.user.photo_url" />
-                                        </a>
-                                    </div>
-                                    <div class="comment-meta">
-                                        <h3 class="font-16 fw-500 mb-2">
-                                            {{ reply.user.username }}
-                                        </h3>
-                                        <p class="font-14 fw-300 mb-2">
-                                            {{ reply.body }}
-                                        </p>
-                                        <span class="font-14 fw-300">
-                                            {{ reply.created_at_dates.created_at_human }}
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="card-body">
+                            <p class="card-text">{{ question.body }}</p>
                         </div>
-
-                        <!--/ END COMMENTS-->
                     </div>
 
-                    <!-- RIGHT -->
-                    <div class="col-md-3">
-                        <div class="post-detail-sidebar">
-                            <!-- Designer info -->
-                            <div
-                                class="modal-user-meta white-bg-color"
-                            >
-                                <a
+                    <!-- Design Comments -->
+                    <div class="design-comments mt-3">
+                        <h1 class="font-16 fw-300 mb-4">
+                            <strong class="fw-500">
+                                {{ replies.length }} replies
+                            </strong>
+                        </h1>
+                        <ul class="comment-list">
+                            <QuestionReply
+                                v-for="reply in replies"
+                                :key="reply.id"
+                                :reply="reply"
+                                @deleted="handleDelete"
+                            ></QuestionReply>
+                        </ul>
+                    </div>
+
+                    <template v-if="$auth.loggedIn">
+                        <form @submit.prevent="save">
+                            <base-textarea
+                                :rows="2"
+                                :form="form"
+                                field="body"
+                                v-model.trim="form.body"
+                                placeholder="Enter a Reply"
+                            ></base-textarea>
+                            <div class="mt-2 text-right">
+                                <base-button
+                                    :loading="form.busy"
+                                    size="sm"
+                                >Post Reply</base-button>
+                            </div>
+                        </form>
+                    </template>
+                    <!--/ END COMMENTS-->
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-md-3">
+                    <div class="post-detail-sidebar">
+                        <div class="modal-user-meta white-bg-color">
+                                <img
+                                    :src="question.user.photo_url"
                                     class="float-left"
-                                    href="#"
-                                    title="Neba"
-                                >
-                                    <img
-                                        src="assets/images/profile.png"
-                                        alt="Neba"
-                                    />
-                                </a>
-                                <div class="modal-user-detail">
-                                    <h1 class="font-13 fw-500">
-                                        <a href="#">
-                                            John Doe
-                                        </a>
-                                    </h1>
-                                    <p class="font-12 fw-300 mt-1">
-                                        <span class="shot-by">Sr. UI Designer</span>
-                                    </p>
-                                    <p class="font-12 fw-300  mt-1">
-                                        13 days ago
-                                    </p>
-                                </div>
+                                />
+                            <div class="modal-user-detail">
+                                <h1 class="font-13 fw-500 mt-1">
+                                    {{ question.user.username }}
+                                </h1>
+                                <p class="font-12 fw-300 mt-2 mb-1">
+                                    {{ question.created_at_dates.created_at_human }}
+                                </p>
                             </div>
-                            <!-- End Designer info -->
-                            <!-- Designer Design Info -->
-                            <ul
-                                class="details-side-meta font-14 fw-400"
-                            >
+                        </div>
 
-                                <li class="d-table w-100">
-                                    <div
-                                        class="stats-txt d-table-cell w-50"
-                                    >
-                                        <a href="#">
-                                            <span>
-                                                <i
-                                                    class="fa fa-heart"
-                                                ></i>
-                                            </span>
-                                            Like
-                                        </a>
-                                    </div>
-                                    <div
-                                        class="stats-num d-table-cell w-50 text-right"
-                                    >
-                                        <a href="#">100 Likes</a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <!-- End Designer Design Info -->
-                            <!-- Designer More Designs -->
-                            <div class="designs-tag-outer mt-3">
-                                <h2 class="font-16 fw-500 mb-2">
-                                    Tags
-                                </h2>
-                                <div
-                                    class="designs-tag font-14 fw-300"
-                                >
-                                    <a href="#" title="3D">3D</a>
-                                    <a href="#" title="among trees"
-                                        >among trees</a
-                                    >
-                                    <a href="#" title="birds"
-                                        >birds</a
-                                    >
-                                    <a href="#" title="environment"
-                                        >environment</a
-                                    >
-                                    <a href="#" title="forest"
-                                        >forest</a
-                                    >
-                                    <a href="#" title="night"
-                                        >night</a
-                                    >
-                                    <a href="#" title="stylized"
-                                        >stylized</a
-                                    >
-                                    <a href="#" title="sunset"
-                                        >sunset</a
-                                    >
-                                    <a href="#" title="survival"
-                                        >survival</a
-                                    >
+                        <ul class="details-side-meta font-14 fw-400">
+                            <li class="d-table w-100">
+                                <div class="stats-txt d-table-cell w-50">
+                                    <a href="#">
+                                        <span>
+                                            <i class="fa fa-heart"></i>
+                                        </span>
+                                        Like
+                                    </a>
                                 </div>
+                                <div class="stats-num d-table-cell w-50 text-right">
+                                    <a href="#">100 Likes</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="designs-tag-outer mt-3">
+                            <h2 class="font-16 fw-500 mb-2">
+                                Tags
+                            </h2>
+                            <div
+                                class="designs-tag font-14 fw-300"
+                            >
+                                <a href="#" title="3D">3D</a>
+                                <a href="#" title="among trees"
+                                    >among trees</a
+                                >
+                                <a href="#" title="birds"
+                                    >birds</a
+                                >
+                                <a href="#" title="environment"
+                                    >environment</a
+                                >
+                                <a href="#" title="forest"
+                                    >forest</a
+                                >
+                                <a href="#" title="night"
+                                    >night</a
+                                >
+                                <a href="#" title="stylized"
+                                    >stylized</a
+                                >
+                                <a href="#" title="sunset"
+                                    >sunset</a
+                                >
+                                <a href="#" title="survival"
+                                    >survival</a
+                                >
                             </div>
                         </div>
                     </div>
-                    <!--/ END RIGHT-->
                 </div>
             </div>
         </div>
@@ -148,10 +126,16 @@
 </template>
 
 <script>
+import QuestionReply from '@/components/QuestionReply';
 export default {
+    components: {
+        QuestionReply
+    },
     data(){
         return {
-
+            form: this.$vform({
+                body: ''
+            })
         }
     },
     async asyncData({ $axios, params }){
@@ -166,6 +150,19 @@ export default {
             }else{
                 error({statusCode: 500, message: "Internal server error"});
             }
+        }
+    },
+    methods: {
+        handleDelete(id){
+            this.replies = this.replies.filter(r => r.id !== id);
+        },
+        save(){
+            this.form.post(`questions/${this.question.id}/replies`)
+            .then(res => {
+                this.form.reset()
+                this.replies = [...this.replies, res.data.data]
+            })
+            .catch(e => console.log(e));
         }
     }
 }
