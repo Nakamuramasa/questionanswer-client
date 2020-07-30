@@ -68,21 +68,9 @@
                             </div>
                         </div>
 
-                        <ul class="details-side-meta font-14 fw-400">
-                            <li class="d-table w-100">
-                                <div class="stats-txt d-table-cell w-50">
-                                    <a href="#">
-                                        <span>
-                                            <i class="fa fa-heart"></i>
-                                        </span>
-                                        Like
-                                    </a>
-                                </div>
-                                <div class="stats-num d-table-cell w-50 text-right">
-                                    <a href="#">100 Likes</a>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="details-side-meta font-14 fw-400">
+                            <QuestionLike :question="question"></QuestionLike>
+                        </div>
 
                         <div class="designs-tag-outer mt-3">
                             <h2 class="font-16 fw-500 mb-2">
@@ -127,9 +115,11 @@
 
 <script>
 import QuestionReply from '@/components/QuestionReply';
+import QuestionLike from '@/components/QuestionLike';
 export default {
     components: {
-        QuestionReply
+        QuestionReply,
+        QuestionLike
     },
     data(){
         return {

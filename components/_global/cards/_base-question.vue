@@ -16,7 +16,7 @@
                     <div class="card-footer text-muted">
                         <ul class="font-14 fw-400 list-inline text-light-gray">
                             <li class="pt-0 list-inline-item">
-                                <i class="fas fa-thumbs-up"></i>
+                                <i class="fas fa-heart"></i>
                                 {{ question.likes_count }}
                             </li>
                             <li class="pt-0 list-inline-item">
