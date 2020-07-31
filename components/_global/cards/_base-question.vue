@@ -14,16 +14,12 @@
                         <p class="card-text mb-0 text-dark">{{ question.body }}</p>
                     </div>
                     <div class="card-footer text-muted">
-                        <ul class="font-14 fw-400 list-inline text-light-gray">
-                            <li class="pt-0 list-inline-item">
-                                <i class="fas fa-heart"></i>
-                                {{ question.likes_count }}
-                            </li>
-                            <li class="pt-0 list-inline-item">
+                        <div class="font-14 fw-400 list-inline text-light-gray">
+                            <div class="pt-0 list-inline-item">
                                 <i class="fas fa-comments"></i>
-                                {{ question.replies_count }}
-                            </li>
-                        </ul>
+                                {{ question.replies_count }} Replies
+                            </div>
+                        </div>
                     </div>
                 </div>
             </a>

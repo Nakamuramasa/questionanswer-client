@@ -68,10 +68,6 @@
                             </div>
                         </div>
 
-                        <div class="details-side-meta font-14 fw-400">
-                            <QuestionLike :question="question"></QuestionLike>
-                        </div>
-
                         <div class="designs-tag-outer mt-3">
                             <h2 class="font-16 fw-500 mb-2">
                                 Tags
@@ -115,11 +111,9 @@
 
 <script>
 import QuestionReply from '@/components/QuestionReply';
-import QuestionLike from '@/components/QuestionLike';
 export default {
     components: {
         QuestionReply,
-        QuestionLike
     },
     data(){
         return {
