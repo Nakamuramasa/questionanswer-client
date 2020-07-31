@@ -15,12 +15,12 @@
                 {{ reply.created_at_dates.created_at_human }}
                 <span>
                     <a class="d-flex justify-content-end mr-4 mb-2" href="#" @click.prevent="likeReply()" v-if="$auth.loggedIn">
-                        <div v-if="liked">
+                        <template v-if="liked">
                             <i class="fas fa-heart text-danger"></i>
-                        </div>
-                        <div v-else>
+                        </template>
+                        <template v-else>
                             <i class="fas fa-heart"></i>
-                        </div>
+                        </template>
                         <p class="text-right">
                             {{ reply.likes_count }}
                         </p>
