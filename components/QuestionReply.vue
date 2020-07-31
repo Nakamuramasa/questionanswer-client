@@ -11,16 +11,21 @@
                 {{ reply.body }}
             </p>
 
-            <span class="font-14 fw-300 d-flex justify-content-between">
+            <span class="font-14 fw-300">
                 {{ reply.created_at_dates.created_at_human }}
                 <span>
-                    <a href="#" @click.prevent="likeReply()" v-if="$auth.loggedIn">
-                        <i class="fas fa-heart text-danger float-left"></i>
+                    <a class="d-flex justify-content-end mr-4 mb-2" href="#" @click.prevent="likeReply()" v-if="$auth.loggedIn">
+                        <template v-if="liked">
+                            <i class="fas fa-heart text-danger"></i>
+                        </template>
+                        <template v-else>
+                            <i class="fas fa-heart"></i>
+                        </template>
+                        <p class="text-right">
+                            {{ reply.likes_count }}
+                        </p>
                     </a>
-                    <p class="font-15 fw-400 mb-3">
-                        {{ reply.likes_count }}
-                    </p>
-                    <span v-if="$auth.loggedIn && $auth.user.id == reply.user.id">
+                    <span class="d-flex justify-content-end" v-if="$auth.loggedIn && $auth.user.id == reply.user.id">
                         <a href="#" @click.prevent="destroyReply" class="text-danger">
                             Delete
                         </a>
@@ -41,20 +46,12 @@ export default {
         };
     },
     methods: {
-        likeIt(){
-            this.liked ? this.decr() : this.incr()
-            this.liked = !this.liked
-        },
-        incr(){
-            this.count++
-        },
-        decr(){
-            this.count--
-        },
         likeReply(){
             this.$axios.post(`/replies/${this.reply.id}/like`)
-            .then(res => this.reply.likes_count = res.data.total)
-            .catch(e => console.log(e))
+            .then(res => {
+                this.reply.liked = !this.reply.liked;
+                this.reply.likes_count = res.data.total;
+            });
         },
         destroyReply(){
             this.$axios.delete(`/replies/${this.reply.id}`)

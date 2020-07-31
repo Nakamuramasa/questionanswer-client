@@ -9,6 +9,9 @@
                             {{ question.title }}
                         </div>
                         <div class="card-body">
+                            <h5 class="card-title text-secondary mb-3 d-flex">
+                                {{ question.user.username }} said {{ question.created_at_dates.created_at_human }}
+                            </h5>
                             <p class="card-text">{{ question.body }}</p>
                         </div>
                     </div>
